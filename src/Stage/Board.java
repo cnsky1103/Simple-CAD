@@ -1,19 +1,15 @@
 package Stage;
 
-import com.sun.javafx.geom.Shape;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.PixelFormat;
-import javafx.scene.image.PixelWriter;
 import javafx.scene.layout.VBox;
 
 import Basic.Size;
 import javafx.scene.paint.Color;
 
-import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +30,7 @@ public class Board {
         group = new Group();
         vBox = new VBox();
         vBox.setAlignment(Pos.CENTER);
-        vBox.setPadding(new Insets(10, 20, 0, 0));
+        vBox.setPadding(new Insets(10, 0, 0, 0));
         vBox.getChildren().add(group);
 
         canvas = new Canvas(Size.CANVAS_WIDTH, Size.CANVAS_HEIGHT);
@@ -97,10 +93,13 @@ public class Board {
             group.getChildren().remove(canvasList.get(canvasList.size() - 1));
             canvasList.remove(canvasList.size() - 1);
         }
+        gc.stroke();
     }
 
     public void clear() {
-
+        group.getChildren().removeAll(canvasList);
+        canvasList.clear();
+        gc.stroke();
     }
 
     public VBox getBoard() {

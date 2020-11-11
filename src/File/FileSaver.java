@@ -41,24 +41,16 @@ public class FileSaver {
             if (img != null) {
                 ImageIO.write(renderedImage, type, img);
             }
-            img = null;
-            myCanvas = null;
         } catch (IOException ignored) {
         }
     }
 
-    /**
-     * 画布生成器，将所有图层合并成一个canvas
-     *
-     * @param list 传入所有图层
-     * @return canvas
-     */
     private Canvas createCanvas(List<Canvas> list) {
         Canvas tempCanvas = new Canvas(Size.CANVAS_WIDTH, Size.CANVAS_HEIGHT);
         SnapshotParameters params = new SnapshotParameters();
         params.setFill(Color.TRANSPARENT);
-        for (Canvas aList : list) {
-            WritableImage image = aList.snapshot(params, null);
+        for (Canvas c : list) {
+            WritableImage image = c.snapshot(params, null);
             tempCanvas.getGraphicsContext2D().drawImage(image, 0, 0);
         }
         return tempCanvas;
