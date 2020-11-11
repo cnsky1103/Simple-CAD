@@ -12,7 +12,7 @@ public class MainStage extends Stage {
     private Board board;
     private MyToolBar toolBar;
 
-    public MainStage(){
+    public MainStage() {
         group = new Group();
         pane = new BorderPane();
 
@@ -26,8 +26,8 @@ public class MainStage extends Stage {
         show();
     }
 
-    private void initPane(){
-        MyMenuBar myMenuBar=new MyMenuBar(this);
+    private void initPane() {
+        MyMenuBar myMenuBar = new MyMenuBar(this);
         myMenuBar.getMenuBar().prefWidthProperty().bind(this.widthProperty());
         pane.setTop(myMenuBar.getMenuBar());
 
@@ -36,5 +36,9 @@ public class MainStage extends Stage {
 
         toolBar = new MyToolBar();
         pane.setLeft(toolBar.getToolBar());
+    }
+
+    public Board getBoard() {
+        return board;
     }
 }

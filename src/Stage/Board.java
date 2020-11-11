@@ -6,11 +6,14 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.PixelFormat;
+import javafx.scene.image.PixelWriter;
 import javafx.scene.layout.VBox;
 
 import Basic.Size;
 import javafx.scene.paint.Color;
 
+import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,8 +67,8 @@ public class Board {
         });
 
         canvas.setOnMouseDragged(e -> {
-            if (ShapeAttribute.getTool().equals("PEN")
-                    || ShapeAttribute.getTool().equals("RUBBER")) {
+            if (ShapeAttribute.getTool().equals("PEN")) {
+                gc.setStroke(ShapeAttribute.getColor());
                 gc.lineTo(e.getX(), e.getY());
                 gc.stroke();
             }
@@ -89,11 +92,15 @@ public class Board {
         });
     }
 
-    private void undo() {
+    public void undo() {
         if (!canvasList.isEmpty()) {
             group.getChildren().remove(canvasList.get(canvasList.size() - 1));
             canvasList.remove(canvasList.size() - 1);
         }
+    }
+
+    public void clear() {
+
     }
 
     public VBox getBoard() {

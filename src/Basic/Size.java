@@ -6,4 +6,6 @@ public class Size {
 
     public static final double TOOL_BUTTON_WIDTH = 20;
     public static final double TOOL_BUTTON_HEIGHT = 20;
+
+    public static final double COLOR_SELECTOR_WIDTH = 5;
 }

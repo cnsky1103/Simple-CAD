@@ -4,6 +4,7 @@ import Basic.Path;
 import Basic.Size;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
@@ -11,10 +12,12 @@ import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class MyToolBar {
     private TilePane pane;
     private List<MyButton> buttons;
+    private ColorSelector colorSelector;
 
     private VBox vBox;
 
@@ -29,6 +32,9 @@ public class MyToolBar {
         vBox.setSpacing(10);
 
         vBox.getChildren().add(pane);
+
+        colorSelector = new ColorSelector();
+        vBox.getChildren().add(colorSelector.getColorPanel());
     }
 
     private void initPane() {
@@ -58,6 +64,33 @@ public class MyToolBar {
             ShapeAttribute.setTool("LINE");
         });
         buttons.add(line);
+
+        MyButton circle = new MyButton("CIRCLE");
+        circle.setGraphic(getImageView(new Image(Path.CIRCLE)));
+        circle.setOnMouseClicked(e -> {
+            ShapeAttribute.setTool("CIRCLE");
+        });
+        buttons.add(circle);
+
+        MyButton rectangle = new MyButton("RECTANGLE");
+        rectangle.setGraphic(getImageView(new Image(Path.RECTANGLE)));
+        rectangle.setOnMouseClicked(e -> {
+            ShapeAttribute.setTool("RECTANGLE");
+        });
+        buttons.add(rectangle);
+
+        MyButton text = new MyButton("TEXT");
+        text.setGraphic(getImageView(new Image(Path.TEXT)));
+        text.setOnMouseClicked(e -> {
+            ShapeAttribute.setTool("TEXT");
+            TextInputDialog dialog = new TextInputDialog("");
+            dialog.setTitle("文本输入框");
+            dialog.setContentText("请输入");
+            dialog.setHeaderText("修改字体后，直接在画布点击");
+            Optional<String> result = dialog.showAndWait();
+            result.ifPresent(ShapeAttribute::setText);
+        });
+        buttons.add(text);
 
         pane.getChildren().addAll(buttons);
     }

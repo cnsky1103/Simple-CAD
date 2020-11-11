@@ -5,9 +5,9 @@ import javafx.scene.paint.Color;
 public class ShapeAttribute {
     private static String tool = "PEN";
     private static Color color = Color.BLACK;
-    //static
+    private static String text = "";
 
-    static String getTool(){
+    static String getTool() {
         return tool;
     }
 
@@ -15,11 +15,19 @@ public class ShapeAttribute {
         tool = newTool;
     }
 
-    static Color getColor(){
+    static Color getColor() {
         return color;
     }
 
     static void setColor(Color newColor) {
         color = newColor;
+    }
+
+    static String getText() {
+        return text;
+    }
+
+    static void setText(String t) {
+        text = t;
     }
 }
