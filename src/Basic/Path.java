@@ -13,4 +13,7 @@ public class Path {
 
     public static final String TEXT = "/Icon/text.png";
 
+    public static final String MOUSE = "/Icon/mouse.png";
+
+    public static final String MOVE = "/Icon/move.png";
 }

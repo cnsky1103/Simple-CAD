@@ -44,6 +44,20 @@ public class MyToolBar {
         pane.setHgap(5);
         pane.setVgap(5);
 
+        MyButton mouse = new MyButton("MOUSE");
+        mouse.setGraphic(getImageView(new Image(Path.MOUSE)));
+        mouse.setOnMouseClicked(e -> {
+            ShapeAttribute.setTool("MOUSE");
+        });
+        buttons.add(mouse);
+
+        MyButton move = new MyButton("MOVE");
+        move.setGraphic(getImageView(new Image(Path.MOVE)));
+        move.setOnMouseClicked(e -> {
+            ShapeAttribute.setTool("MOVE");
+        });
+        buttons.add(move);
+
         MyButton pen = new MyButton("PEN");
         pen.setGraphic(getImageView(new Image(Path.PEN)));
         pen.setOnMouseClicked(e -> {

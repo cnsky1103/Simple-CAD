@@ -1,11 +1,15 @@
 package Stage;
 
+import Component.Shape;
 import javafx.scene.paint.Color;
+
+import java.util.ArrayList;
 
 public class ShapeAttribute {
     private static String tool = "PEN";
     private static Color color = Color.BLACK;
     private static String text = "";
+    public static ArrayList<Shape> shapeArrayList = new ArrayList<>();
 
     static String getTool() {
         return tool;
