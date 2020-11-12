@@ -55,6 +55,9 @@ public class Board {
             c.setOnMouseReleased(canvas.getOnMouseReleased());
             c.setOnMouseDragged(canvas.getOnMouseDragged());
 
+            painter = new Painter();
+            painter.setPainter(c, ShapeAttribute.getColor(), false);
+
             startX = e.getX();
             startY = e.getY();
 
@@ -74,9 +77,6 @@ public class Board {
             endX = e.getX();
             endY = e.getY();
 
-            painter = new Painter();
-            painter.setPainter(canvas, ShapeAttribute.getColor(), false);
-
             double w = Math.abs(endX - startX), h = Math.abs(endY - startY);
 
             if (!ShapeAttribute.getTool().equals("PEN")
@@ -93,13 +93,16 @@ public class Board {
             group.getChildren().remove(canvasList.get(canvasList.size() - 1));
             canvasList.remove(canvasList.size() - 1);
         }
-        gc.stroke();
+        //gc.stroke();
     }
 
     public void clear() {
-        group.getChildren().removeAll(canvasList);
+        group.getChildren().clear();
         canvasList.clear();
-        gc.stroke();
+        gc.setFill(Color.WHITE);
+        gc.fillRect(0, 0, Size.CANVAS_WIDTH, Size.CANVAS_HEIGHT);
+        gc.restore();
+        group.getChildren().add(canvas);
     }
 
     public VBox getBoard() {
