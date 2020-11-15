@@ -14,27 +14,27 @@ public class ShapeAttribute {
     public static ArrayList<Shape> shapeArrayList = new ArrayList<>();
     public static List<Canvas> canvasList;
 
-    static String getTool() {
+    public static String getTool() {
         return tool;
     }
 
-    static void setTool(String newTool) {
+    public static void setTool(String newTool) {
         tool = newTool;
     }
 
-    static Color getColor() {
+    public static Color getColor() {
         return color;
     }
 
-    static void setColor(Color newColor) {
+    public static void setColor(Color newColor) {
         color = newColor;
     }
 
-    static String getText() {
+    public static String getText() {
         return text;
     }
 
-    static void setText(String t) {
+    public static void setText(String t) {
         text = t;
     }
 }

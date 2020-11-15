@@ -1,5 +1,6 @@
 package Stage;
 
+import Component.Painter;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;

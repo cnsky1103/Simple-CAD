@@ -65,13 +65,6 @@ public class MyToolBar {
         });
         buttons.add(pen);
 
-        MyButton rubber = new MyButton("RUBBER");
-        rubber.setGraphic(getImageView(new Image(Path.RUBBER)));
-        rubber.setOnMouseClicked(e -> {
-            ShapeAttribute.setTool("RUBBER");
-        });
-        buttons.add(rubber);
-
         MyButton line = new MyButton("LINE");
         line.setGraphic(getImageView(new Image(Path.LINE)));
         line.setOnMouseClicked(e -> {
