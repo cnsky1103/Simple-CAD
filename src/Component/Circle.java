@@ -1,13 +1,16 @@
 package Component;
 
+import javafx.scene.paint.Color;
+
 public class Circle extends Shape {
     private double x1, y1, x2, y2;
 
-    public Circle(double x1, double y1, double x2, double y2) {
+    public Circle(double x1, double y1, double x2, double y2, Color c) {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
+        super.setColor(c);
     }
 
     @Override
@@ -23,5 +26,10 @@ public class Circle extends Shape {
         a[2] = x2;
         a[3] = y2;
         return a;
+    }
+
+    @Override
+    public String toString() {
+        return "Circle " + x1 + " " + y1 + " " + x2 + " " + y2 + " " + super.toString();
     }
 }

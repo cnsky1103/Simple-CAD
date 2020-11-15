@@ -1,6 +1,8 @@
 package File;
 
 import Basic.Size;
+import Component.Shape;
+import Stage.ShapeAttribute;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
@@ -11,48 +13,32 @@ import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
 import java.awt.image.RenderedImage;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileSaver {
-    private List<Canvas> canvasList;
 
-    public FileSaver(List<Canvas> c) {
-        if (c.isEmpty())
-            canvasList = new ArrayList<>();
-        else {
-            canvasList = new ArrayList<>(c);
-        }
+    public FileSaver() {
+
     }
 
-    public void saveToFile() {
+    public void save(){
         FileChooser fc = new FileChooser();
-        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PNG", "*.png"));
-        fc.setTitle("保存图片");
-        File img = fc.showSaveDialog(null);
-        String type = "PNG";
-
+        fc.setTitle("保存可编辑图片");
+        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("CAD", "*.cad"));
+        File f = fc.showSaveDialog(null);
         try {
-            Canvas myCanvas = createCanvas(this.canvasList);
-            WritableImage writableImage = new WritableImage((int) (Size.CANVAS_WIDTH), (int) Size.CANVAS_HEIGHT);
-            myCanvas.snapshot(null, writableImage);
-            RenderedImage renderedImage = SwingFXUtils.fromFXImage(writableImage, null);
-            if (img != null) {
-                ImageIO.write(renderedImage, type, img);
+            FileWriter fw = new FileWriter(f.getPath());
+            for (Shape s : ShapeAttribute.shapeArrayList) {
+                String t = s.toString();
+                fw.write(t);
             }
-        } catch (IOException ignored) {
+            fw.close();
+        } catch (IOException e) {
+
         }
     }
 
-    private Canvas createCanvas(List<Canvas> list) {
-        Canvas tempCanvas = new Canvas(Size.CANVAS_WIDTH, Size.CANVAS_HEIGHT);
-        SnapshotParameters params = new SnapshotParameters();
-        params.setFill(Color.TRANSPARENT);
-        for (Canvas c : list) {
-            WritableImage image = c.snapshot(params, null);
-            tempCanvas.getGraphicsContext2D().drawImage(image, 0, 0);
-        }
-        return tempCanvas;
-    }
 }

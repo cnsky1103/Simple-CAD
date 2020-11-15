@@ -1,5 +1,6 @@
 package Stage;
 
+import File.FileLoader;
 import File.FileSaver;
 import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
@@ -32,20 +33,23 @@ public class MyMenuBar {
         fOpen = new MenuItem();
         fOpen.setText("打开");
         fOpen.setStyle(fontSize);
+        fOpen.setOnAction(e -> {
+            FileLoader loader = new FileLoader();
+            loader.load(mainStage);
+        });
 
         fSave = new MenuItem();
         fSave.setText("保存");
         fSave.setStyle(fontSize);
         fSave.setOnAction(e -> {
-            List<Canvas> canvasList = mainStage.getBoard().getCanvasList();
-            FileSaver saver = new FileSaver(canvasList);
-            saver.saveToFile();
+            FileSaver saver = new FileSaver();
+            saver.save();
         });
 
         fClose = new MenuItem();
         fClose.setText("关闭");
         fClose.setStyle(fontSize);
-        fClose.setOnAction(e->{
+        fClose.setOnAction(e -> {
             Platform.exit();
         });
 
