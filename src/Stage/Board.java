@@ -10,6 +10,7 @@ import javafx.scene.layout.VBox;
 
 import Basic.Size;
 import javafx.scene.paint.Color;
+import sample.ShapeAttribute;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +61,7 @@ public class Board {
                         break;
                     }
                 }
-            } else if (state.equals("MOVE")) {
+            } else if (state.equals("MOVE") || state.equals("RESIZE")) {
 
             } else {
                 Canvas c = new Canvas(Size.CANVAS_WIDTH, Size.CANVAS_HEIGHT);
@@ -92,7 +93,7 @@ public class Board {
             state = ShapeAttribute.getTool();
             if (state.equals("MOUSE")) {
 
-            } else if (state.equals("MOVE")) {
+            } else if (state.equals("MOVE") || state.equals("RESIZE")) {
                 double[] p = ShapeAttribute.shapeArrayList.get(selected).getPoint();
                 String className = ShapeAttribute.shapeArrayList.get(selected).getClass().toString();
                 className = className.substring(6);
@@ -100,8 +101,10 @@ public class Board {
                 className = className.toUpperCase();
 
                 double dx = endX - startX, dy = endY - startY;
-                p[0] += dx;
-                p[1] += dy;
+                if (state.equals("MOVE")) {
+                    p[0] += dx;
+                    p[1] += dy;
+                }
                 p[2] += dx;
                 p[3] += dy;
 

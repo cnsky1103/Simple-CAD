@@ -1,4 +1,4 @@
-package Stage;
+package sample;
 
 import Component.Shape;
 import javafx.scene.canvas.Canvas;

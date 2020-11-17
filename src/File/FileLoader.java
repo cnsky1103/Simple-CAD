@@ -1,7 +1,7 @@
 package File;
 
 import Stage.MainStage;
-import Stage.ShapeAttribute;
+import sample.ShapeAttribute;
 import javafx.stage.FileChooser;
 
 import java.io.BufferedReader;

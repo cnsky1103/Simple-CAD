@@ -1,22 +1,12 @@
 package File;
 
-import Basic.Size;
 import Component.Shape;
-import Stage.ShapeAttribute;
-import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.SnapshotParameters;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.image.WritableImage;
-import javafx.scene.paint.Color;
+import sample.ShapeAttribute;
 import javafx.stage.FileChooser;
 
-import javax.imageio.ImageIO;
-import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class FileSaver {
 

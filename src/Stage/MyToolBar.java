@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import sample.ShapeAttribute;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +58,13 @@ public class MyToolBar {
             ShapeAttribute.setTool("MOVE");
         });
         buttons.add(move);
+
+        MyButton resize = new MyButton("RESIZE");
+        resize.setGraphic(getImageView(new Image(Path.RESIZE)));
+        resize.setOnMouseClicked(e -> {
+            ShapeAttribute.setTool("RESIZE");
+        });
+        buttons.add(resize);
 
         MyButton pen = new MyButton("PEN");
         pen.setGraphic(getImageView(new Image(Path.PEN)));
